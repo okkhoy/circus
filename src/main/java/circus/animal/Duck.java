@@ -3,12 +3,12 @@ package circus.animal;
 public class Duck extends Bird {
     @Override
     public String speak() {
-        return "Quack Quack";
+        return toString() + "  Quack Quack";
     }
 
     @Override
     public String toString() {
-        return "I'm a Duck";
+        return "I'm " + name + ". I am a Duck!";
     }
 
     public void swim() {
@@ -18,5 +18,9 @@ public class Duck extends Bird {
     @Override
     public int getValue() {
         return 10;
+    }
+
+    public Duck(String name) {
+        this.name = name;
     }
 }
