@@ -10,6 +10,9 @@ import circus.animal.Duck;
 import circus.animal.Parrot;
 import circus.animal.Tiger;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 
 public class Circus {
     private static Animal[] animals = {
