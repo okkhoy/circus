@@ -1,5 +1,6 @@
 package circus;
 
+import circus.animal.Elephant;
 import circus.stuff.Equipment;
 import circus.stuff.Cannon;
 import circus.stuff.Ladder;
