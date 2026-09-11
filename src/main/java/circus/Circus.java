@@ -1,13 +1,17 @@
 package circus;
 
-import circus.equipment.Equipment;
-import circus.equipment.Cannon;
-import circus.equipment.Ladder;
-
-import circus.animal.Tiger;
 import circus.animal.Animal;
+import circus.animal.Elephant;
 import circus.animal.Duck;
 import circus.animal.Parrot;
+import circus.animal.Tiger;
+import circus.equipment.Cage;
+import circus.equipment.Cannon;
+import circus.equipment.Equipment;
+import circus.equipment.Ladder;
+
+import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Circus {
     private static Animal[] animals = {
@@ -42,8 +46,62 @@ public class Circus {
     }
 
     public static void main(String[] args) {
+        ArrayList<Animal> animalArrayList = new ArrayList<>(Arrays.asList(animals));
+
+        System.out.println("Add a new elephant");
+        animalArrayList.add(new Elephant("StrongOne"));
+        System.out.println("(using AL) Number of animals in the circus: " + animalArrayList.size());
+
+        Parrot andy = new Parrot("Andy");
+        animalArrayList.add(andy);
+
+        System.out.println("\n \n before sorting:");
+        printAllAnimals(animalArrayList);
+
+        Animal candidate = findAnimalReference(animalArrayList,"Polly");
+        System.out.println("Position of candidate in the AL is: " + animalArrayList.indexOf(candidate));
+
+        animalArrayList.sort(Animal.animalNameComparator);
+
+        System.out.println("After sorting:");
+        printAllAnimals(animalArrayList);
         makeAnimalsTalk();
         System.out.println("Total value of animals " + calculateAssetValue(animals));
         System.out.println("Total value of equipments " + calculateAssetValue(equipments));
+
+        Cage<Duck> duckCage = new Cage<>();
+        Duck duck = new Duck("Scrooge");
+        duckCage.lockUp(duck);
+        Parrot parrot = new Parrot("Blu");
+        Cage<Parrot> parrotCage = new Cage<>();
+        parrotCage.lockUp(parrot);
+
+        ArrayList<Cage> cages = new ArrayList<>();
+        cages.add(duckCage);
+        cages.add(parrotCage);
+
+        for(Cage c: cages) {
+            c.release();
+        }
+
+    }
+
+    /**
+     * Prints all elements in the array list (of type Animal)
+     */
+    private static void printAllAnimals(ArrayList<Animal> animals) {
+        for(Animal a: animals) {
+            System.out.println(a);
+        }
+    }
+
+
+    private static Animal findAnimalReference(ArrayList<Animal> animals, String nameOfAnimal) {
+        for(Animal a: animals) {
+            if (a.name == nameOfAnimal) {
+                return a;
+            }
+        }
+        return null;
     }
 }
