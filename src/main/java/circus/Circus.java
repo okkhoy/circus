@@ -1,13 +1,14 @@
 package circus;
 
+import circus.animal.*;
 import circus.equipment.Equipment;
 import circus.equipment.Cannon;
 import circus.equipment.Ladder;
 
-import circus.animal.Tiger;
-import circus.animal.Animal;
-import circus.animal.Duck;
-import circus.animal.Parrot;
+import jdk.swing.interop.SwingInterOpUtils;
+
+import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Circus {
     private static Animal[] animals = {
